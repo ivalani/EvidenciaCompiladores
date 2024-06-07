@@ -80,7 +80,7 @@ Mas información en: https://experiencia21.tec.mx/courses/482333/assignments/154
 
 ## Videos de reflexion 
 
-- Alfredo Jeong Hyun Park: 
+- Alfredo Jeong Hyun Park: https://drive.google.com/file/d/1ydvvtV24pniyrrjYRHTwQPUqxydJLGxB/view?usp=drive_link
 - Iwalani Amador Piaga: 
 - Tonatiuh Reyes Huerta: 
 
