@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'COMMA CONNECT DIV EQUAL EXP LPAREN MINUS NUMBER PLUS RPAREN STRING TIMES VARIABLE\n    assignment : VARIABLE EQUAL expression\n    \n    assignment : VARIABLE EQUAL flow\n    \n    flow : VARIABLE CONNECT flow_functions\n    \n    flow_functions : flow_function_call CONNECT flow_functions\n    \n    flow_functions : flow_function_call\n    \n    flow_function_call : VARIABLE LPAREN params RPAREN\n    \n    assignment : expression\n    \n    expression : expression PLUS term\n    \n    expression : expression MINUS term\n    \n    expression : term\n                | string_def\n    \n    string_def : STRING\n    \n    term : exponent\n    \n    term : term TIMES exponent\n    \n    term : term DIV exponent\n    \n    exponent : factor\n    \n    exponent : factor EXP factor\n    \n    factor : NUMBER\n    \n    factor : VARIABLE\n    \n    factor : LPAREN expression RPAREN\n    \n    factor : function_call\n    \n    function_call : VARIABLE LPAREN RPAREN\n    \n    function_call : VARIABLE LPAREN params RPAREN\n    \n    params : params COMMA expression\n    \n    params : expression\n    '
+_lr_signature = "COMMA CONNECT DIV ELSE EQ EQUAL EXP GE GT IF LE LPAREN LT MINUS NE NUMBER PLUS RPAREN STRING TIMES VARIABLE\n    assignment : VARIABLE EQUAL expression\n    \n    assignment : VARIABLE EQUAL flow\n    \n    flow : VARIABLE CONNECT flow_functions\n    \n    flow_functions : flow_function_call CONNECT flow_functions\n    \n    flow_functions : flow_function_call\n    \n    flow_function_call : VARIABLE LPAREN params RPAREN\n    \n    assignment : expression\n    \n    expression : expression PLUS term\n    \n    expression : expression MINUS term\n    \n    expression : term\n               | string_def\n    \n    string_def : STRING\n    \n    term : exponent\n    \n    term : term TIMES exponent\n    \n    term : term DIV exponent\n    \n    exponent : factor\n    \n    exponent : factor EXP factor\n    \n    factor : NUMBER\n    \n    factor : LPAREN expression RPAREN\n    \n    factor : VARIABLE\n    \n    factor : VARIABLE LPAREN params RPAREN\n    \n    params : expression\n           | expression COMMA params\n    \n    params :\n    \n    conditional : IF LPAREN condition RPAREN block ELSE block\n                | IF LPAREN condition RPAREN block\n    \n    condition : expression LT expression\n              | expression GT expression\n              | expression LE expression\n              | expression GE expression\n              | expression EQ expression\n              | expression NE expression\n    \n    block : '{' statements '}'\n    \n    statements : statements statement\n               | statement\n    \n    statement : assignment\n              | conditional\n    "
     
-_lr_action_items = {'VARIABLE':([0,10,12,13,14,15,16,17,18,33,35,40,41,],[2,20,21,20,20,20,20,20,20,36,20,20,36,]),'STRING':([0,10,12,13,35,40,],[7,7,7,7,7,7,]),'NUMBER':([0,10,12,13,14,15,16,17,18,35,40,],[9,9,9,9,9,9,9,9,9,9,9,]),'LPAREN':([0,2,10,12,13,14,15,16,17,18,20,21,35,36,40,],[10,13,10,10,10,10,10,10,10,10,13,13,10,40,10,]),'$end':([1,2,3,4,5,6,7,8,9,11,20,21,22,23,24,27,28,29,30,31,32,34,37,38,43,44,],[0,-19,-7,-10,-11,-13,-12,-16,-18,-21,-19,-19,-1,-2,-22,-8,-9,-14,-15,-17,-20,-23,-3,-5,-4,-6,]),'EQUAL':([2,],[12,]),'EXP':([2,8,9,11,20,21,24,32,34,],[-19,18,-18,-21,-19,-19,-22,-20,-23,]),'TIMES':([2,4,6,8,9,11,20,21,24,27,28,29,30,31,32,34,],[-19,16,-13,-16,-18,-21,-19,-19,-22,16,16,-14,-15,-17,-20,-23,]),'DIV':([2,4,6,8,9,11,20,21,24,27,28,29,30,31,32,34,],[-19,17,-13,-16,-18,-21,-19,-19,-22,17,17,-14,-15,-17,-20,-23,]),'PLUS':([2,3,4,5,6,7,8,9,11,19,20,21,22,24,26,27,28,29,30,31,32,34,39,],[-19,14,-10,-11,-13,-12,-16,-18,-21,14,-19,-19,14,-22,14,-8,-9,-14,-15,-17,-20,-23,14,]),'MINUS':([2,3,4,5,6,7,8,9,11,19,20,21,22,24,26,27,28,29,30,31,32,34,39,],[-19,15,-10,-11,-13,-12,-16,-18,-21,15,-19,-19,15,-22,15,-8,-9,-14,-15,-17,-20,-23,15,]),'RPAREN':([4,5,6,7,8,9,11,13,19,20,24,25,26,27,28,29,30,31,32,34,39,42,],[-10,-11,-13,-12,-16,-18,-21,24,32,-19,-22,34,-25,-8,-9,-14,-15,-17,-20,-23,-24,44,]),'COMMA':([4,5,6,7,8,9,11,20,24,25,26,27,28,29,30,31,32,34,39,42,],[-10,-11,-13,-12,-16,-18,-21,-19,-22,35,-25,-8,-9,-14,-15,-17,-20,-23,-24,35,]),'CONNECT':([21,38,44,],[33,41,-6,]),}
+_lr_action_items = {'VARIABLE':([0,10,11,12,13,14,15,16,17,31,33,38,39,],[2,19,20,19,19,19,19,19,19,34,19,19,34,]),'STRING':([0,10,11,12,33,38,],[7,7,7,7,7,7,]),'NUMBER':([0,10,11,12,13,14,15,16,17,33,38,],[9,9,9,9,9,9,9,9,9,9,9,]),'LPAREN':([0,2,10,11,12,13,14,15,16,17,19,20,33,34,38,],[10,12,10,10,10,10,10,10,10,10,12,12,10,38,10,]),'$end':([1,2,3,4,5,6,7,8,9,19,20,21,22,25,26,27,28,29,30,32,35,36,41,42,],[0,-20,-7,-10,-11,-13,-12,-16,-18,-20,-20,-1,-2,-8,-9,-14,-15,-17,-19,-21,-3,-5,-4,-6,]),'EQUAL':([2,],[11,]),'EXP':([2,8,9,19,20,30,32,],[-20,17,-18,-20,-20,-19,-21,]),'TIMES':([2,4,6,8,9,19,20,25,26,27,28,29,30,32,],[-20,15,-13,-16,-18,-20,-20,15,15,-14,-15,-17,-19,-21,]),'DIV':([2,4,6,8,9,19,20,25,26,27,28,29,30,32,],[-20,16,-13,-16,-18,-20,-20,16,16,-14,-15,-17,-19,-21,]),'PLUS':([2,3,4,5,6,7,8,9,18,19,20,21,24,25,26,27,28,29,30,32,],[-20,13,-10,-11,-13,-12,-16,-18,13,-20,-20,13,13,-8,-9,-14,-15,-17,-19,-21,]),'MINUS':([2,3,4,5,6,7,8,9,18,19,20,21,24,25,26,27,28,29,30,32,],[-20,14,-10,-11,-13,-12,-16,-18,14,-20,-20,14,14,-8,-9,-14,-15,-17,-19,-21,]),'RPAREN':([4,5,6,7,8,9,12,18,19,23,24,25,26,27,28,29,30,32,33,37,38,40,],[-10,-11,-13,-12,-16,-18,-24,30,-20,32,-22,-8,-9,-14,-15,-17,-19,-21,-24,-23,-24,42,]),'COMMA':([4,5,6,7,8,9,19,24,25,26,27,28,29,30,32,],[-10,-11,-13,-12,-16,-18,-20,33,-8,-9,-14,-15,-17,-19,-21,]),'CONNECT':([20,36,42,],[31,39,-6,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'assignment':([0,],[1,]),'expression':([0,10,12,13,35,40,],[3,19,22,26,39,26,]),'term':([0,10,12,13,14,15,35,40,],[4,4,4,4,27,28,4,4,]),'string_def':([0,10,12,13,35,40,],[5,5,5,5,5,5,]),'exponent':([0,10,12,13,14,15,16,17,35,40,],[6,6,6,6,6,6,29,30,6,6,]),'factor':([0,10,12,13,14,15,16,17,18,35,40,],[8,8,8,8,8,8,8,8,31,8,8,]),'function_call':([0,10,12,13,14,15,16,17,18,35,40,],[11,11,11,11,11,11,11,11,11,11,11,]),'flow':([12,],[23,]),'params':([13,40,],[25,42,]),'flow_functions':([33,41,],[37,43,]),'flow_function_call':([33,41,],[38,38,]),}
+_lr_goto_items = {'assignment':([0,],[1,]),'expression':([0,10,11,12,33,38,],[3,18,21,24,24,24,]),'term':([0,10,11,12,13,14,33,38,],[4,4,4,4,25,26,4,4,]),'string_def':([0,10,11,12,33,38,],[5,5,5,5,5,5,]),'exponent':([0,10,11,12,13,14,15,16,33,38,],[6,6,6,6,6,6,27,28,6,6,]),'factor':([0,10,11,12,13,14,15,16,17,33,38,],[8,8,8,8,8,8,8,8,29,8,8,]),'flow':([11,],[22,]),'params':([12,33,38,],[23,37,40,]),'flow_functions':([31,39,],[35,41,]),'flow_function_call':([31,39,],[36,36,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,29 +27,41 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> assignment","S'",1,None,None,None),
-  ('assignment -> VARIABLE EQUAL expression','assignment',3,'p_assignment_assign','translator.py',96),
-  ('assignment -> VARIABLE EQUAL flow','assignment',3,'p_assignment_flow','translator.py',107),
-  ('flow -> VARIABLE CONNECT flow_functions','flow',3,'p_flow','translator.py',117),
-  ('flow_functions -> flow_function_call CONNECT flow_functions','flow_functions',3,'p_flow_functions','translator.py',134),
-  ('flow_functions -> flow_function_call','flow_functions',1,'p_flow_functions_alone','translator.py',152),
-  ('flow_function_call -> VARIABLE LPAREN params RPAREN','flow_function_call',4,'p_flow_function_call','translator.py',158),
-  ('assignment -> expression','assignment',1,'p_assignment_expression','translator.py',174),
-  ('expression -> expression PLUS term','expression',3,'p_expression_plus','translator.py',180),
-  ('expression -> expression MINUS term','expression',3,'p_expression_minus','translator.py',189),
-  ('expression -> term','expression',1,'p_expression_term','translator.py',198),
-  ('expression -> string_def','expression',1,'p_expression_term','translator.py',199),
-  ('string_def -> STRING','string_def',1,'p_string_def','translator.py',205),
-  ('term -> exponent','term',1,'p_term_exponent','translator.py',211),
-  ('term -> term TIMES exponent','term',3,'p_term_times','translator.py',217),
-  ('term -> term DIV exponent','term',3,'p_term_div','translator.py',226),
-  ('exponent -> factor','exponent',1,'p_exponent_factor','translator.py',235),
-  ('exponent -> factor EXP factor','exponent',3,'p_exponent_exp','translator.py',241),
-  ('factor -> NUMBER','factor',1,'p_factor_number','translator.py',250),
-  ('factor -> VARIABLE','factor',1,'p_factor_variable','translator.py',257),
-  ('factor -> LPAREN expression RPAREN','factor',3,'p_factor_expression','translator.py',263),
-  ('factor -> function_call','factor',1,'p_factor_function_call','translator.py',271),
-  ('function_call -> VARIABLE LPAREN RPAREN','function_call',3,'p_function_call_no_params','translator.py',277),
-  ('function_call -> VARIABLE LPAREN params RPAREN','function_call',4,'p_function_call_with_params','translator.py',283),
-  ('params -> params COMMA expression','params',3,'p_params_multiple','translator.py',292),
-  ('params -> expression','params',1,'p_params_single','translator.py',298),
+  ('assignment -> VARIABLE EQUAL expression','assignment',3,'p_assignment_assign','translator.py',108),
+  ('assignment -> VARIABLE EQUAL flow','assignment',3,'p_assignment_flow','translator.py',118),
+  ('flow -> VARIABLE CONNECT flow_functions','flow',3,'p_flow','translator.py',128),
+  ('flow_functions -> flow_function_call CONNECT flow_functions','flow_functions',3,'p_flow_functions','translator.py',142),
+  ('flow_functions -> flow_function_call','flow_functions',1,'p_flow_functions_alone','translator.py',154),
+  ('flow_function_call -> VARIABLE LPAREN params RPAREN','flow_function_call',4,'p_flow_function_call','translator.py',160),
+  ('assignment -> expression','assignment',1,'p_assignment_expression','translator.py',171),
+  ('expression -> expression PLUS term','expression',3,'p_expression_plus','translator.py',177),
+  ('expression -> expression MINUS term','expression',3,'p_expression_minus','translator.py',186),
+  ('expression -> term','expression',1,'p_expression_term','translator.py',195),
+  ('expression -> string_def','expression',1,'p_expression_term','translator.py',196),
+  ('string_def -> STRING','string_def',1,'p_string_def','translator.py',202),
+  ('term -> exponent','term',1,'p_term_exponent','translator.py',208),
+  ('term -> term TIMES exponent','term',3,'p_term_times','translator.py',214),
+  ('term -> term DIV exponent','term',3,'p_term_div','translator.py',223),
+  ('exponent -> factor','exponent',1,'p_exponent_factor','translator.py',232),
+  ('exponent -> factor EXP factor','exponent',3,'p_exponent_exp','translator.py',238),
+  ('factor -> NUMBER','factor',1,'p_factor_num','translator.py',247),
+  ('factor -> LPAREN expression RPAREN','factor',3,'p_factor_expr','translator.py',253),
+  ('factor -> VARIABLE','factor',1,'p_factor_var','translator.py',261),
+  ('factor -> VARIABLE LPAREN params RPAREN','factor',4,'p_function_call','translator.py',267),
+  ('params -> expression','params',1,'p_params','translator.py',276),
+  ('params -> expression COMMA params','params',3,'p_params','translator.py',277),
+  ('params -> <empty>','params',0,'p_empty_params','translator.py',286),
+  ('conditional -> IF LPAREN condition RPAREN block ELSE block','conditional',7,'p_conditional_if','translator.py',292),
+  ('conditional -> IF LPAREN condition RPAREN block','conditional',5,'p_conditional_if','translator.py',293),
+  ('condition -> expression LT expression','condition',3,'p_condition','translator.py',311),
+  ('condition -> expression GT expression','condition',3,'p_condition','translator.py',312),
+  ('condition -> expression LE expression','condition',3,'p_condition','translator.py',313),
+  ('condition -> expression GE expression','condition',3,'p_condition','translator.py',314),
+  ('condition -> expression EQ expression','condition',3,'p_condition','translator.py',315),
+  ('condition -> expression NE expression','condition',3,'p_condition','translator.py',316),
+  ('block -> { statements }','block',3,'p_block','translator.py',325),
+  ('statements -> statements statement','statements',2,'p_statements','translator.py',331),
+  ('statements -> statement','statements',1,'p_statements','translator.py',332),
+  ('statement -> assignment','statement',1,'p_statement','translator.py',341),
+  ('statement -> conditional','statement',1,'p_statement','translator.py',342),
 ]
